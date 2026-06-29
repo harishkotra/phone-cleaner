@@ -1,0 +1,87 @@
+{
+  "name": "phone-cleaner",
+  "version": "0.1.0",
+  "description": "Browse, preview, and clean up WhatsApp media from Android phone via ADB",
+  "author": "Harish Kotra <https://harishkotra.me>",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron_config_cache=/tmp/electron-cache electron .",
+    "dev": "electron_config_cache=/tmp/electron-cache electron .",
+    "build:mac": "HOME=/tmp/fake-home electron-builder --mac",
+    "build:win": "HOME=/tmp/fake-home electron-builder --win",
+    "build": "HOME=/tmp/fake-home electron-builder --mac --win",
+    "dist": "HOME=/tmp/fake-home electron-builder --mac --win --linux"
+  },
+  "build": {
+    "appId": "me.harishkotra.phone-cleaner",
+    "productName": "Phone Cleaner",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "CHANGELOG.md",
+      "LICENSE"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/",
+        "to": "assets/"
+      }
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.utilities",
+      "artifactName": "${productName}-${version}-mac-${arch}.${ext}"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-win-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    }
+  },
+  "devDependencies": {
+    "electron": "^35.7.5",
+    "electron-builder": "^26.15.3"
+  }
+}

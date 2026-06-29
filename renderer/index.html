@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Cleaner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top status bar -->
+    <header id="topbar">
+      <span id="logo">Phone Cleaner</span>
+      <span class="spacer"></span>
+      <span id="status"></span>
+    </header>
+
+    <!-- Toolbar -->
+    <section id="toolbar">
+      <div class="tool-group">
+        <select id="device-select"><option value="">No device connected</option></select>
+        <button id="scan-btn" disabled class="primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Scan Media
+        </button>
+        <button id="refresh-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+        </button>
+        <div class="sep"></div>
+        <button id="history-btn" class="secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          History
+        </button>
+      </div>
+
+      <div class="tool-group" id="filters">
+        <label class="chk"><input type="checkbox" id="fi" checked> Images</label>
+        <label class="chk"><input type="checkbox" id="fv" checked> Videos</label>
+        <div class="sep"></div>
+        <input type="text" id="search" placeholder="Search files..." spellcheck="false">
+        <div class="sep"></div>
+        <label class="num">Min <input type="number" id="smin" min="0" step="0.1" value="0"> MB</label>
+        <label class="num">Max <input type="number" id="smax" min="0" step="0.1" placeholder="∞"> MB</label>
+        <select id="sort-select">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="largest">Largest first</option>
+          <option value="smallest">Smallest first</option>
+        </select>
+        <span id="file-count" class="dim"></span>
+      </div>
+
+      <div class="tool-group" id="actions">
+        <span id="sel-count">0 selected</span>
+        <button id="sel-all-btn" class="small">Select All</button>
+        <button id="sel-none-btn" class="small">Clear</button>
+        <span class="spacer"></span>
+        <button id="keep-btn" disabled class="small success">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          Keep
+        </button>
+        <button id="delete-btn" disabled class="small danger">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          Delete Selected
+        </button>
+      </div>
+
+      <div id="progress" class="hidden">
+        <div id="progress-track"><div id="progress-fill"></div></div>
+        <span id="progress-text"></span>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <main id="content">
+      <div id="welcome">
+        <div class="welcome-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h2>Clean up your phone's media</h2>
+        <p class="sub">Connect your Android phone, scan WhatsApp media, and decide what to keep or delete.</p>
+
+        <div class="steps">
+          <div class="step"><span class="step-num">1</span> Enable <strong>USB Debugging</strong> on your phone (Settings → Developer Options)</div>
+          <div class="step"><span class="step-num">2</span> Connect via USB and tap <strong>Allow</strong> on the phone prompt</div>
+          <div class="step"><span class="step-num">3</span> Click <strong>Scan Media</strong> to browse your WhatsApp files</div>
+        </div>
+
+        <div class="disclaimer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span><strong>100% local &amp; private.</strong> Everything runs on your machine. Files transfer directly via ADB over USB. No AI, no cloud, no data leaves your computer.</span>
+        </div>
+
+        <div class="attribution">
+          Built by <a href="https://harishkotra.me" target="_blank" rel="noopener">Harish Kotra</a>
+          &middot;
+          <a href="https://dailybuild.xyz" target="_blank" rel="noopener">Check out my other builds</a>
+        </div>
+      </div>
+
+      <div id="grid" class="hidden"></div>
+    </main>
+
+    <!-- Preview modal -->
+    <div id="modal" class="hidden">
+      <div id="modal-overlay"></div>
+      <div id="modal-body">
+        <button id="modal-close" class="modal-x">&times;</button>
+        <div id="modal-media"></div>
+        <div id="modal-info"></div>
+      </div>
+    </div>
+
+    <!-- History panel -->
+    <div id="hpanel" class="hidden">
+      <div id="hpanel-overlay"></div>
+      <div id="hpanel-body">
+        <div class="hpanel-header">
+          <h3>Delete History</h3>
+          <div class="hpanel-actions">
+            <button id="hpanel-clear" class="small danger">Clear</button>
+            <button id="hpanel-close" class="small">&times;</button>
+          </div>
+        </div>
+        <div id="hpanel-summary"></div>
+        <div id="hpanel-list"></div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
