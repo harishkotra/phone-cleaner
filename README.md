@@ -176,17 +176,17 @@ Contributions are welcome! Here are some ideas for features you could add:
 
 | Feature | Description | Complexity |
 |---------|-------------|------------|
-| **Video thumbnail extraction** | Use ffmpeg to extract a frame from videos for thumbnail preview | Medium |
-| **Bulk export** | Pull selected files to a local folder before deleting | Low |
-| **Other media sources** | Add Telegram, Signal, or camera folder scanning | Low |
-| **Undo delete** | Move files to a trash folder instead of permanent delete | Medium |
-| **Duplicate detection** | Find and group duplicate files by hash | Medium |
-| **Date range filter** | Filter files by a date picker instead of manual sort | Low |
-| **Statistics dashboard** | Charts showing storage usage over time, file type distribution | Medium |
-| **Wireless ADB** | Support pairing over Wi-Fi (adb pair) | Low |
-| **Dark/Light theme toggle** | Let users switch themes | Low |
-| **i18n** | Multi-language support | Medium |
-| **Offline cache browser** | Browse previously pulled thumbnails without phone connected | Low |
+| [**Video thumbnail extraction**](https://github.com/harishkotra/phone-cleaner/issues/1) | Use ffmpeg to extract a frame from videos for thumbnail preview | Medium |
+| [**Bulk export**](https://github.com/harishkotra/phone-cleaner/issues/2) | Pull selected files to a local folder before deleting | Low |
+| [**Other media sources**](https://github.com/harishkotra/phone-cleaner/issues/3) | Add Telegram, Signal, or camera folder scanning | Low |
+| [**Undo delete**](https://github.com/harishkotra/phone-cleaner/issues/4) | Move files to a trash folder instead of permanent delete | Medium |
+| [**Duplicate detection**](https://github.com/harishkotra/phone-cleaner/issues/5) | Find and group duplicate files by hash | Medium |
+| [**Date range filter**](https://github.com/harishkotra/phone-cleaner/issues/6) | Filter files by a date picker instead of manual sort | Low |
+| [**Statistics dashboard**](https://github.com/harishkotra/phone-cleaner/issues/7) | Charts showing storage usage over time, file type distribution | Medium |
+| [**Wireless ADB**](https://github.com/harishkotra/phone-cleaner/issues/8) | Support pairing over Wi-Fi (adb pair) | Low |
+| [**Dark/Light theme toggle**](https://github.com/harishkotra/phone-cleaner/issues/9) | Let users switch themes | Low |
+| [**i18n**](https://github.com/harishkotra/phone-cleaner/issues/10) | Multi-language support | Medium |
+| [**Offline cache browser**](https://github.com/harishkotra/phone-cleaner/issues/11) | Browse previously pulled thumbnails without phone connected | Low |
 
 ### Development Setup
 
