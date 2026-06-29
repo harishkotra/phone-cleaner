@@ -217,4 +217,11 @@ The app uses no build step — vanilla JS with Electron. Edit files in `renderer
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT](LICENSE)
+
+### Screenshots
+
+<img width="1276" height="857" alt="phone-cleaner-1" src="https://github.com/user-attachments/assets/ce44f945-fa53-42c1-b392-3fe3ecdc1116" />
+<img width="1277" height="858" alt="phone-cleaner-2" src="https://github.com/user-attachments/assets/a79241a9-6431-4346-9341-11c2b853e502" />
+<img width="1276" height="856" alt="phone-cleaner-3" src="https://github.com/user-attachments/assets/3eadbe40-54b5-49b6-b92d-927e99b15236" />
+<img width="1279" height="857" alt="phone-cleaner-4" src="https://github.com/user-attachments/assets/bddd3733-54be-4dcc-aaf7-7eb164bcc6df" />
