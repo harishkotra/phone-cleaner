@@ -217,4 +217,4 @@ The app uses no build step — vanilla JS with Electron. Edit files in `renderer
 
 ## License
 
-MIT
+[MIT](LICENSE.md)
